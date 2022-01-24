@@ -1,4 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PrimeNGConfig } from 'primeng/api';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { Tickets } from './modules/graficos/models/tickets';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +14,81 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'front-movidesk';
+
+  public urlServe!: string;
+  public subscription!: Subscription;
+  public ticketList!: Tickets[];
+
+  constructor(private config: PrimeNGConfig,
+    public route: ActivatedRoute,
+    public http: HttpClient) {
+      this.urlServe = environment.api + '/api/tickets';
+    }
+
+    ngOnInit() {
+      this.timeCarregar();
+        this.config.setTranslation({
+          dayNames: [ "domingo","segunda","terça","quarta","quinta","sexta","sábado" ],
+          dayNamesShort: [ "dom","seg","ter","qua","qui","sex","sáb" ],
+          dayNamesMin: [ "D","S","T","Q","Q","S","S" ],
+          monthNames: [ "Janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro" ],
+          monthNamesShort: [ "jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez" ],
+          today: 'Hoje',
+          clear: 'Limpar',
+          accept: 'Accept',
+          reject: 'Cancel',
+          emptyMessage: 'Nenhum resultado encontrado!',
+          choose: 'Escolher',
+          upload: 'Enviar',
+          cancel: 'Cancelar'
+            //Tradutor
+        });
+    }
+
+    public timeCarregar() {
+      setTimeout(() => {
+        this.subscription = this.route.params.subscribe(params => {
+          this.atualizaTickets();
+          this.atualizaStatusTickets();
+        });
+        this.timeCarregar();
+        console.log('30 minutos');
+      }, 1800000);
+    }
+
+    public atualizaTickets() {
+
+      this.updateTickets().subscribe((registro: Tickets[]) => {
+        this.ticketList = registro;
+        console.log(this.ticketList);
+      }, error => {
+        console.error(error);
+      });
+      return false;
+    }
+  
+  
+    public updateTickets(): Observable<Tickets[]> {
+      return this.http.get<Tickets[]>(this.urlServe + '/updateTickets').pipe(map((item: any) => {
+        return item;
+      }));
+    }
+
+    public atualizaStatusTickets() {
+
+      this.updateStatusTickets().subscribe((registro: Tickets[]) => {
+        this.ticketList = registro;
+        console.log(this.ticketList);
+      }, error => {
+        console.error(error);
+      });
+      return false;
+    }
+  
+  
+    public updateStatusTickets(): Observable<Tickets[]> {
+      return this.http.get<Tickets[]>(this.urlServe + '/statusTickets').pipe(map((item: any) => {
+        return item;
+      }));
+    }
 }

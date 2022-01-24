@@ -1,0 +1,13 @@
+<p-sidebar class="sidebar"[visible]="visible" position="left" [showCloseIcon]="false" styleClass="np-menubar" [modal]="false">
+    <ul class="np-menu">
+        <ng-template #recursiveList let-list>
+            <li *ngFor="let menu of list">
+                <a [routerLink]="[menu.RouterLink]" routerLinkActive="link-activated"  onClick="fecharMenu()">
+                    <i class="icone"   [ngClass]="menu.Icon"></i>
+                    {{menu.Label}}
+                </a>
+            </li>
+        </ng-template>
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: items }"></ng-container>
+    </ul>
+</p-sidebar>
