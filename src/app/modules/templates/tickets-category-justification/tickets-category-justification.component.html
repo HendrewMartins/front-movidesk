@@ -1,0 +1,25 @@
+<div class="card" *ngIf="true">
+    <mat-grid-list cols="2" rowHeight="1:1">
+        <mat-grid-tile  class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Justificativa</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Tickets Abertos por Justificativa</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataJustificationPie" [options]="chartOptionsJustificationPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Categoria</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Tickets Abertos por Categoria</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataCategoryPie" [options]="chartOptionsCategoryPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        
+        
+    </mat-grid-list>          
+   
+</div>

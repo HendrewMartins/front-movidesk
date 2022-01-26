@@ -15,6 +15,11 @@ import { SidebarModule } from 'primeng/sidebar';
 import { HeaderComponent } from './pages/admin/header/header.component';
 import { MenuComponent } from './pages/admin/menu/menu.component';
 import { LoadingModule } from './modules/cadastros/loading/loading.module';
+import { TicketsAbertosModule } from './modules/templates/tickets-abertos/tickets-abertos.module';
+import { TicketsAnalistaModule } from './modules/templates/tickets-analista/tickets-analista.module';
+import { TicketsCategoryModule } from './modules/templates/tickets-category/tickets-category.module';
+import { TicketsJustificationModule } from './modules/templates/tickets-justification/tickets-justification.module';
+import { TicketsCategoryJustificationModule } from './modules/templates/tickets-category-justification/tickets-category-justification.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,11 @@ import { LoadingModule } from './modules/cadastros/loading/loading.module';
     ButtonModule,
     SidebarModule,
     LoadingModule,
+    TicketsAbertosModule,
+    TicketsAnalistaModule,
+    TicketsCategoryModule,
+    TicketsJustificationModule,
+    TicketsCategoryJustificationModule,
   ],
  
 

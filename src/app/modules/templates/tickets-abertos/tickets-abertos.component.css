@@ -1,0 +1,29 @@
+.example-card {
+    width: 100%;
+    /*max-width: 80vw;*/
+}
+ 
+ .titulocard{
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    margin: 4%;
+    width: 100%;
+}
+
+.subtitulocard{
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+    margin: 4%;
+    width: 100%;
+}
+
+.tile {
+    display: block;
+    position: absolute;
+    overflow: initial; 
+}
+.graficobar{
+    height: 50%;
+}

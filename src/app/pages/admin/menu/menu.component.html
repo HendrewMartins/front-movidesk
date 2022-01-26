@@ -2,7 +2,7 @@
     <ul class="np-menu">
         <ng-template #recursiveList let-list>
             <li *ngFor="let menu of list">
-                <a [routerLink]="[menu.RouterLink]" routerLinkActive="link-activated"  onClick="fecharMenu()">
+                <a [routerLink]="[menu.RouterLink]" routerLinkActive="link-activated">
                     <i class="icone"   [ngClass]="menu.Icon"></i>
                     {{menu.Label}}
                 </a>

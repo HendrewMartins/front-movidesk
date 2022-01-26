@@ -1,0 +1,36 @@
+export interface AgenteJustification {
+    businessName?: string;
+    idAgente?: string;
+    paralisado?: number;
+    semjustification?: number;
+    aguarDesenv?: number;
+    emAnalise?: number;
+    aguardEscla?: number;
+    responClien?: number;
+    emVerificacao?: number;
+    treinaAgendad?: number;
+    aprovado?: number;
+    emValidSupor?: number;
+    aguardAtualiz?: number;
+    aguardAprovac?: number;
+    aguardInfra?: number;
+    aguardAnalis?: number;
+    emTestes?: number;
+    aguardImpacto?: number;
+    aguardEnVersao?: number;
+    impaAvaliado?: number;
+    aguardOrcament?: number;
+    emVerificaInter?: number;
+    aguardCompilac?: number;
+    emDesenvolviment?: number;
+    aguardFaturame?: number;
+    aguardInfParCli?: number;
+    desenvolvido?: number;
+    aguarAprovPreAnali?: number;
+    aguarEsclaSup?: number;
+    aguarValidParc?: number;
+    agendVistTecn?: number;
+    preAnalAprov?: number;
+    envAnalise?: number;
+    aguarRetClien?: number;
+}

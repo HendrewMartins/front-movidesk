@@ -15,8 +15,30 @@ export class MenuDataService {
     getMenuList(): CustomMenuItem[] {
         return [
             {
-                Label: 'Graficos', Icon: 'pi pi-sliders-h', RouterLink: 'loading', Childs: [], IsChildVisible: false
+                Label: 'Graficos Automaticos', Icon: 'pi pi-sliders-h', RouterLink: 'loading', Childs: [], IsChildVisible: false
+                
+            },
+            {
+                Label: 'Tickets Abertos por Situação', Icon: 'pi pi-sliders-h', RouterLink: 'abertos', Childs: [], IsChildVisible: false
+                
+            },
+            {
+                Label: 'Tickets Abertos x Analista', Icon: 'pi pi-sliders-h', RouterLink: 'abertosAnalista', Childs: [], IsChildVisible: false
+                
+            },
+            {
+                Label: 'Tickets por Categoria x Analista', Icon: 'pi pi-sliders-h', RouterLink: 'abertosCategoria', Childs: [], IsChildVisible: false
+                
+            },
+            {
+                Label: 'Tickets por Justifativa x Analista', Icon: 'pi pi-sliders-h', RouterLink: 'abertosJustificativa', Childs: [], IsChildVisible: false
+                
+            },
+            {
+                Label: 'Tickets por Justifativa e Categoria', Icon: 'pi pi-sliders-h', RouterLink: 'categoriaJustificativa', Childs: [], IsChildVisible: false
+                
             }
+
         ];
     }
 }

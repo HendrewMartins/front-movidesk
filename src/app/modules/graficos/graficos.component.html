@@ -1,5 +1,3 @@
-
-
 <p-progressSpinner class="progress" *ngIf="valida"></p-progressSpinner>
 <div class="card" *ngIf="(!valida) && (tab===0)">
     <mat-grid-list cols="3" rowHeight="1:1">
@@ -46,9 +44,71 @@
                     <mat-card-title class="titulocard">Tickets Abertos x Analista</mat-card-title>
                     </mat-card-header>
             <div class="graficobar">        
-            <p-chart type="bar" [data]="stackedData" [options]="stackedOptions"></p-chart>   
+            <p-chart type="bar" [data]="stackedDataAgente" [options]="stackedOptionsAgente"></p-chart>   
             </div> 
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
+</div>
+
+<div class="card" *ngIf="(!valida) && (tab===2)">
+    
+    <mat-grid-list cols="1" rowHeight="2:1">
+        
+        <mat-grid-tile class="tile">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets Abertos por Analista x Categoria</mat-card-title>
+                    </mat-card-header>
+            <div class="graficobar">        
+            <p-chart type="bar" [data]="stackedDataCategory" [options]="stackedOptionsCategory"></p-chart>   
+            </div> 
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+
+<div class="card" *ngIf="(!valida) && (tab===3)">
+    
+    <mat-grid-list cols="1" rowHeight="2:1">
+        
+        <mat-grid-tile class="tile">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets Abertos por Analista x Justificativa</mat-card-title>
+                    </mat-card-header>
+            <div class="graficobar">        
+            <p-chart type="bar" [data]="stackedDataJustification" [options]="stackedOptionsJustification"></p-chart>   
+            </div> 
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div class="card" *ngIf="(!valida) && (tab===4)">
+    <mat-grid-list cols="2" rowHeight="1:1">
+        <mat-grid-tile class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Categoria</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Tickets Abertos por Categoria</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataCategoryPie" [options]="chartOptionsCategoryPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile  class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Justificativa</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Tickets Abertos por Justificativa</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataJustificationPie" [options]="chartOptionsJustificationPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        
+    </mat-grid-list>          
+   
 </div>

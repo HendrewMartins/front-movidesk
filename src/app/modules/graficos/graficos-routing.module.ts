@@ -7,6 +7,10 @@ import { GraficoResolveUrgencyService } from './services/gragicos-resolvedUrgenc
 import { GraficoResolveTypeService } from './services/graficos-resolvedType.service';
 import { LoadingComponent } from '../cadastros/loading/loading.component';
 import { GraficoResolveAgenteService } from './services/graficos-resolvedAgente.service';
+import { GraficoResolveAgenteCategoryService } from './services/graficos-resolvedAgenteCategory.service';
+import { GraficoResolveAgenteJustificationService } from './services/graficos-resolvedAgenteJustification';
+import { GraficoResolveCategoryService } from './services/graficos-resolvedCategory';
+import { GraficoResolveJustificationService } from './services/graficos-resolvedJustification';
 
 const routes: Routes = [
   {
@@ -19,7 +23,11 @@ const routes: Routes = [
       registros: GraficoResolveService,
       urgency: GraficoResolveUrgencyService,
       type: GraficoResolveTypeService,
-      agente: GraficoResolveAgenteService
+      agente: GraficoResolveAgenteService,
+      agenteCategory: GraficoResolveAgenteCategoryService,
+      agenteJustification: GraficoResolveAgenteJustificationService,
+      category: GraficoResolveCategoryService,
+      justification: GraficoResolveJustificationService
     }
   },
   {

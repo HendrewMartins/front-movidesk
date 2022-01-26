@@ -21,8 +21,6 @@ import { DialogModule } from 'primeng/dialog';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MenuModule } from 'primeng/menu';
 import { TabViewModule } from 'primeng/tabview';
-import { GraficosComponent } from './graficos/graficos.component';
-
 
 @NgModule({
     imports: [

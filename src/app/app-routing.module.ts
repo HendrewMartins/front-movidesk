@@ -10,10 +10,11 @@ const routes: Routes = [
     children: [
           { path: 'graficos', loadChildren: () => import('./modules/graficos/graficos.module').then(m => m.GraficosModule)},
           { path: 'loading', loadChildren: () => import('./modules/cadastros/loading/loading.module').then(m => m.LoadingModule)},
-         // { path: 'bimestre', loadChildren: () => import('./modules/cadastros/bimestre/bimestre.module').then(m => m.BimestreModule)},
-         // { path: 'boletim', loadChildren: () => import('./modules/cadastros/boletim/boletim.module').then(m => m.BoletimModule)},
-         // { path: 'notas', loadChildren: () => import('./modules/cadastros/notas/notas.module').then(m => m.NotasModule)},
-         // { path: 'importar', loadChildren: () => import('./modules/cadastros/importar/importar.module').then(m => m.ImportarModule)},
+          { path: 'abertos', loadChildren: () => import('./modules/templates/tickets-abertos/tickets-abertos.module').then(m => m.TicketsAbertosModule)},
+          { path: 'abertosAnalista', loadChildren: () => import('./modules/templates/tickets-analista/tickets-analista.module').then(m => m.TicketsAnalistaModule)},
+          { path: 'abertosCategoria', loadChildren: () => import('./modules/templates/tickets-category/tickets-category.module').then(m => m.TicketsCategoryModule)},
+          { path: 'abertosJustificativa', loadChildren: () => import('./modules/templates/tickets-justification/tickets-justification.module').then(m => m.TicketsJustificationModule)},
+          { path: 'categoriaJustificativa', loadChildren: () => import('./modules/templates/tickets-category-justification/tickets-category-justification.module').then(m => m.TicketsCategoryJustificationModule)},
     ]
   }
 ];

@@ -55,9 +55,7 @@ export class MenuComponent implements OnInit {
         this.menuDataService.toggleMenuBar.observers.forEach(function (element) { element.complete(); });
     }
 
-    public fecharMenu(){
-        this.visible = false;
-    }
+   
 
     
 }
