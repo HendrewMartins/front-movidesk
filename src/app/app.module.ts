@@ -20,6 +20,16 @@ import { TicketsAnalistaModule } from './modules/templates/tickets-analista/tick
 import { TicketsCategoryModule } from './modules/templates/tickets-category/tickets-category.module';
 import { TicketsJustificationModule } from './modules/templates/tickets-justification/tickets-justification.module';
 import { TicketsCategoryJustificationModule } from './modules/templates/tickets-category-justification/tickets-category-justification.module';
+import { TicketsAnosModule } from './modules/templates/tickets-anos/tickets-anos.module';
+import { TicketsAnosCategoryModule } from './modules/templates/tickets-anos-category/tickets-anos-category.module';
+import { TicketsMesesCategoryModule } from './modules/templates/tickets-meses-category/tickets-meses-category.module';
+import { TicketsSevenModule } from './modules/templates/tickets-seven/tickets-seven.module';
+import { TicketsSevenStatusModule } from './modules/templates/tickets-seven-status/tickets-seven-status.module';
+import { TicketsSevenCategoryModule } from './modules/templates/tickets-seven-category/tickets-seven-category.module';
+import { TicketsDayModule } from './modules/templates/tickets-day/tickets-day.module';
+import { TicketsDayCategoryModule } from './modules/templates/tickets-day-category/tickets-day-category.module';
+import { TicketsDayStatusModule } from './modules/newtemplates/tickets-day-status/tickets-day-status.module';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +55,15 @@ import { TicketsCategoryJustificationModule } from './modules/templates/tickets-
     TicketsCategoryModule,
     TicketsJustificationModule,
     TicketsCategoryJustificationModule,
+    TicketsAnosModule,
+    TicketsAnosCategoryModule,
+    TicketsMesesCategoryModule,
+    TicketsSevenModule,
+    TicketsSevenStatusModule,
+    TicketsSevenCategoryModule,
+    TicketsDayModule,
+    TicketsDayCategoryModule,
+    TicketsDayStatusModule
   ],
  
 

@@ -11,6 +11,19 @@ import { GraficoResolveAgenteCategoryService } from './services/graficos-resolve
 import { GraficoResolveAgenteJustificationService } from './services/graficos-resolvedAgenteJustification';
 import { GraficoResolveCategoryService } from './services/graficos-resolvedCategory';
 import { GraficoResolveJustificationService } from './services/graficos-resolvedJustification';
+import { GraficoResolveAnosService } from './services/graficos-resolvedAnos.service';
+import { GraficoResolveMesesService } from './services/graficos-resolvedMeses.service';
+import { GraficoResolveSevenSituacaoService } from './services/graficos-resolvedSevenSituacao.service';
+import { GraficoResolveSevenUrgencyService } from './services/graficos-resolvedSevenUrgency.service';
+import { GraficoResolveSevenCategoryService } from './services/graficos-resolvedSevenCategory.service';
+import { GraficoResolveAgenteSevenService } from './services/graficos-resolvedAgenteSeven.service';
+import { GraficoResolveSevenDayCategoryService } from './services/graficos-resolvedSevenDayCategory.service';
+import { GraficoResolveDayCategoryService } from './services/graficos-resolvedDayCategory.service';
+import { GraficoResolveDaySituacaoService } from './services/graficos-resolvedDaySituacao.service';
+import { GraficoResolveDayUrgencyService } from './services/graficos-resolvedDayUrgency.service';
+import { GraficoResolveAgenteDayService } from './services/graficos-resolvedAgenteDay.service';
+import { GraficoResolveDayDayCategoryService } from './services/graficos-resolvedDayDayCategory.service';
+
 
 const routes: Routes = [
   {
@@ -27,7 +40,20 @@ const routes: Routes = [
       agenteCategory: GraficoResolveAgenteCategoryService,
       agenteJustification: GraficoResolveAgenteJustificationService,
       category: GraficoResolveCategoryService,
-      justification: GraficoResolveJustificationService
+      justification: GraficoResolveJustificationService,
+      anos: GraficoResolveAnosService,
+      mesescategory: GraficoResolveMesesService,
+      sevensituacao: GraficoResolveSevenSituacaoService,
+      sevenurgency: GraficoResolveSevenUrgencyService,
+      sevencategory: GraficoResolveSevenCategoryService,
+      sevenagente: GraficoResolveAgenteSevenService,
+      sevendaycategory: GraficoResolveSevenDayCategoryService,
+      daysituacao: GraficoResolveDaySituacaoService,
+      dayurgency: GraficoResolveDayUrgencyService,
+      daycategory: GraficoResolveDayCategoryService,
+      dayagente: GraficoResolveAgenteDayService,
+      daydaycategory: GraficoResolveDayDayCategoryService,
+
     }
   },
   {

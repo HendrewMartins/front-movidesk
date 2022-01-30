@@ -5,3 +5,7 @@ p-toolbar{
     height: 64px;
     font-size: 0.5rem;
 }
+
+.title{
+    text-align: right;
+}

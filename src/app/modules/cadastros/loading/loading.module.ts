@@ -10,6 +10,7 @@ import { PrimeNgModule } from '../../primeng.module';
 import { SplitterModule } from 'primeng/splitter';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
     SplitterModule,
     MatGridListModule,
     MatCardModule,
+    ProgressBarModule
   ]
 })
 export class LoadingModule { }

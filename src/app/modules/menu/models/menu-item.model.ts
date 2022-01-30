@@ -8,7 +8,7 @@ export class CustomMenuItem {
     }
     Label: any;
     Icon?: any;
-    RouterLink: any;
+    RouterLink?: any;
     Childs: CustomMenuItem[];
     IsChildVisible: boolean;
 }

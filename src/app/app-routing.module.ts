@@ -15,7 +15,16 @@ const routes: Routes = [
           { path: 'abertosCategoria', loadChildren: () => import('./modules/templates/tickets-category/tickets-category.module').then(m => m.TicketsCategoryModule)},
           { path: 'abertosJustificativa', loadChildren: () => import('./modules/templates/tickets-justification/tickets-justification.module').then(m => m.TicketsJustificationModule)},
           { path: 'categoriaJustificativa', loadChildren: () => import('./modules/templates/tickets-category-justification/tickets-category-justification.module').then(m => m.TicketsCategoryJustificationModule)},
-    ]
+          { path: 'anos', loadChildren: () => import('./modules/templates/tickets-anos/tickets-anos.module').then(m => m.TicketsAnosModule)},
+          { path: 'anoscategoria', loadChildren: () => import('./modules/templates/tickets-anos-category/tickets-anos-category.module').then(m => m.TicketsAnosCategoryModule)},
+          { path: 'mesescategoria', loadChildren: () => import('./modules/templates/tickets-meses-category/tickets-meses-category.module').then(m => m.TicketsMesesCategoryModule)},
+          { path: 'resumosevendias', loadChildren: () => import('./modules/templates/tickets-seven/tickets-seven.module').then(m => m.TicketsSevenModule)},
+          { path: 'agentesevendias', loadChildren: () => import('./modules/templates/tickets-seven-status/tickets-seven-status.module').then(m => m.TicketsSevenStatusModule)},
+          { path: 'categoriasevendias', loadChildren: () => import('./modules/templates/tickets-seven-category/tickets-seven-category.module').then(m => m.TicketsSevenCategoryModule)},
+          { path: 'resumoday', loadChildren: () => import('./modules/templates/tickets-day/tickets-day.module').then(m => m.TicketsDayModule)},
+          { path: 'agenteday', loadChildren: () => import('./modules/newtemplates/tickets-day-status/tickets-day-status.module').then(m => m.TicketsDayStatusModule)},
+          { path: 'categoryday', loadChildren: () => import('./modules/templates/tickets-day-category/tickets-day-category.module').then(m => m.TicketsDayCategoryModule)},
+        ]
   }
 ];
 

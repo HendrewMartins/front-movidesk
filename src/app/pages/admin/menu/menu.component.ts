@@ -56,6 +56,40 @@ export class MenuComponent implements OnInit {
     }
 
    
+    public onMenuClick(menu: CustomMenuItem) {
+
+       console.log(menu);
+        // if child are available then open child
+        if (menu.Childs != undefined || menu.Childs != null) {
+            this.toggleSubMenu(menu);
+            return;
+        }
+     
+        if (menu.RouterLink == undefined || menu.RouterLink == null || menu.RouterLink == "") {
+            return;
+        }
+
+
+
+        this.selectedItem = menu.Label;
+        // hide menu bar after menu click for mobile layout        
+        setTimeout(() => {
+            if (this.applicationStateService.getIsMobileResolution()) {
+                this.visible = false;
+            }
+        }, 100);
+    }
+
+    public menuClick(menu: CustomMenuItem) {
+        if  (menu.RouterLink != null ) {
+            this.visible = false;
+        }
+    }
+
+    // toggle sub menu on click
+    toggleSubMenu(menu: CustomMenuItem) {
+        menu.IsChildVisible = !menu.IsChildVisible;
+    }
 
     
 }

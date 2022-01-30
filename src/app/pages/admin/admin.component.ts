@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { ApplicationStateService } from 'src/app/services/application-state.service';
 import { MenuDataService } from 'src/app/services/menu-data.service';
@@ -17,7 +18,9 @@ export class AdminComponent implements OnInit {
 
   constructor(private primengConfig: PrimeNGConfig,
     private menuDataService: MenuDataService,
-    private applicationStateService: ApplicationStateService) {
+    private applicationStateService: ApplicationStateService,
+    public router: Router,
+    public route: ActivatedRoute) {
 
   }
 
@@ -38,6 +41,7 @@ export class AdminComponent implements OnInit {
       this.isMenuVisible = true;
     }
     
+    this.router.navigate(['admin/loading'], { relativeTo: this.route.parent });
   }
 
 

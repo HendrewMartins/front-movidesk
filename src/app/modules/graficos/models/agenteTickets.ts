@@ -4,4 +4,7 @@ export interface AgenteTickets{
     quantTicketsInAttendance?: number;
     quantTicketsNew?: number;
     quantTicketsStopped?: number;
+    quantTicketsCanceled?: number;
+    quantTicketsResolved?: number;
+    quantTicketsClosed?: number;
 }

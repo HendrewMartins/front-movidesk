@@ -11,6 +11,19 @@ import { GraficoResolveAgenteCategoryService } from '../../graficos/services/gra
 import { GraficoResolveAgenteJustificationService } from '../../graficos/services/graficos-resolvedAgenteJustification';
 import { GraficoResolveCategoryService } from '../../graficos/services/graficos-resolvedCategory';
 import { GraficoResolveJustificationService } from '../../graficos/services/graficos-resolvedJustification';
+import { GraficoResolveAnosService } from '../../graficos/services/graficos-resolvedAnos.service';
+import { GraficoResolveMesesService } from '../../graficos/services/graficos-resolvedMeses.service';
+import { GraficoResolveSevenSituacaoService } from '../../graficos/services/graficos-resolvedSevenSituacao.service';
+import { GraficoResolveSevenUrgencyService } from '../../graficos/services/graficos-resolvedSevenUrgency.service';
+import { GraficoResolveSevenCategoryService } from '../../graficos/services/graficos-resolvedSevenCategory.service';
+import { GraficoResolveAgenteSevenService } from '../../graficos/services/graficos-resolvedAgenteSeven.service';
+import { GraficoResolveSevenDayCategoryService } from '../../graficos/services/graficos-resolvedSevenDayCategory.service';
+import { GraficoResolveDayCategoryService } from '../../graficos/services/graficos-resolvedDayCategory.service';
+import { GraficoResolveDaySituacaoService } from '../../graficos/services/graficos-resolvedDaySituacao.service';
+import { GraficoResolveDayUrgencyService } from '../../graficos/services/graficos-resolvedDayUrgency.service';
+import { GraficoResolveAgenteDayService } from '../../graficos/services/graficos-resolvedAgenteDay.service';
+import { GraficoResolveDayDayCategoryService } from '../../graficos/services/graficos-resolvedDayDayCategory.service';
+
 
 const routes: Routes = [
   {
@@ -30,7 +43,19 @@ const routes: Routes = [
       agenteCategory: GraficoResolveAgenteCategoryService,
       agenteJustification: GraficoResolveAgenteJustificationService,
       category: GraficoResolveCategoryService,
-      justification: GraficoResolveJustificationService
+      justification: GraficoResolveJustificationService,
+      anos: GraficoResolveAnosService,
+      mesescategory: GraficoResolveMesesService,
+      sevensituacao: GraficoResolveSevenSituacaoService,
+      sevenurgency: GraficoResolveSevenUrgencyService,
+      sevencategory: GraficoResolveSevenCategoryService,
+      sevenagente: GraficoResolveAgenteSevenService,
+      sevendaycategory: GraficoResolveSevenDayCategoryService,
+      daysituacao: GraficoResolveDaySituacaoService,
+      dayurgency: GraficoResolveDayUrgencyService,
+      daycategory: GraficoResolveDayCategoryService,
+      dayagente: GraficoResolveAgenteDayService,
+      daydaycategory: GraficoResolveDayDayCategoryService,  
     }
   }
 ];

@@ -1,0 +1,33 @@
+<div class="card" *ngIf="true">
+    <mat-grid-list cols="3" rowHeight="1:1">
+        <mat-grid-tile class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Situação dos Tickets</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Situação dos Tickets no dia Atual</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataSitDayPie" [options]="chartOptionsSitDayPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile  class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Urgencia</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Urgencia dos Tickets no dia Atual</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataUrgDayPie" [options]="chartOptionsUrgDayPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile  class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Categoria</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Categoria dos Tickets no dia Atual</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataCatDayPie" [options]="chartOptionsCatDayPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        
+    </mat-grid-list>          
+   
+</div>

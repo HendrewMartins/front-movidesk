@@ -1,14 +1,11 @@
 <p-progressSpinner class="progress" *ngIf="false"></p-progressSpinner>
 <div class="card" *ngIf="true">
-    
-            
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <mat-card-title class="titulocard">Tickets Abertos x Analista</mat-card-title>
-                    </mat-card-header>
-            <div class="graficobar">        
-            <p-chart type="bar" [data]="stackedData" [options]="stackedOptions"></p-chart>   
-            </div> 
-            </mat-card>
-       
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title class="titulocard">Tickets Abertos x Analista</mat-card-title>
+        </mat-card-header>
+        <div class="graficobar">
+            <p-chart type="bar" [data]="stackedData" [options]="stackedOptions"></p-chart>
+        </div>
+    </mat-card>
 </div>

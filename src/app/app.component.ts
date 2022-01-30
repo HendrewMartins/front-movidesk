@@ -26,7 +26,8 @@ export class AppComponent {
     }
 
     ngOnInit() {
-      this.timeCarregar();
+      this.timeCarregarTickets();
+      this.timeCarregarStatusTickets();
         this.config.setTranslation({
           dayNames: [ "domingo","segunda","terça","quarta","quinta","sexta","sábado" ],
           dayNamesShort: [ "dom","seg","ter","qua","qui","sex","sáb" ],
@@ -45,14 +46,23 @@ export class AppComponent {
         });
     }
 
-    public timeCarregar() {
+    public timeCarregarTickets() {
       setTimeout(() => {
         this.subscription = this.route.params.subscribe(params => {
           this.atualizaTickets();
+        });
+        this.timeCarregarTickets();
+        console.log('30 minutos');
+      }, 1800000);
+    }
+
+    public timeCarregarStatusTickets() {
+      setTimeout(() => {
+        this.subscription = this.route.params.subscribe(params => {
           this.atualizaStatusTickets();
         });
-        this.timeCarregar();
-        console.log('30 minutos');
+        this.timeCarregarStatusTickets();
+        console.log('10 minutos');
       }, 1800000);
     }
 

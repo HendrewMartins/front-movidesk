@@ -1,0 +1,10 @@
+<div class="card" *ngIf="true">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title class="titulocard">Tickets dos dia Atual por Analista x Situação</mat-card-title>
+        </mat-card-header>
+        <div class="graficobar">
+            <p-chart type="bar" [data]="stackedDataAgenteDay" [options]="stackedOptionsAgenteDay"></p-chart>
+        </div>
+    </mat-card>
+</div>

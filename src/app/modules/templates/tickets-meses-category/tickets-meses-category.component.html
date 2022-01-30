@@ -1,0 +1,10 @@
+<div class="card" *ngIf="true">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title class="titulocard">Ultimos 12 Meses</mat-card-title>
+        </mat-card-header>
+        <div class="graficobar">
+            <p-chart type="line" [data]="lineStylesMesesData" [options]="basicOptions"></p-chart> 
+        </div>
+    </mat-card>
+</div>

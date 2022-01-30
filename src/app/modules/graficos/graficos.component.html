@@ -112,3 +112,182 @@
     </mat-grid-list>          
    
 </div>
+
+<div class="card" *ngIf="(!valida) && (tab===5)">
+    
+    <mat-grid-list cols="1" rowHeight="2:1">
+        
+        <mat-grid-tile class="tile">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Serie Historica</mat-card-title>
+                    </mat-card-header>
+            <div class="graficobar">        
+            <p-chart type="line" [data]="lineStylesData" [options]="basicOptions"></p-chart> 
+            </div> 
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div class="card" *ngIf="(!valida) && (tab===6)">
+    
+    <mat-grid-list cols="1" rowHeight="2:1">
+        
+        <mat-grid-tile class="tile">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Ultimos 12 Meses</mat-card-title>
+                    </mat-card-header>
+            <div class="graficobar">        
+            <p-chart type="line" [data]="lineStylesMesesData" [options]="basicOptions"></p-chart> 
+            </div> 
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div class="card" *ngIf="(!valida) && (tab===7)">
+    <mat-grid-list cols="3" rowHeight="1:1">
+        <mat-grid-tile class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Situação dos Tickets</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Situação dos Tickets dos Ultimos 7 dias</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataSitSevenPie" [options]="chartOptionsSitSevenPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile  class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Urgencia</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Urgencia dos Tickets dos Ultimos 7 dias</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataUrgSevenPie" [options]="chartOptionsUrgSevenPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile  class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Categoria</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Categoria dos Tickets dos 7 Ultimos dias </mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataCatSevenPie" [options]="chartOptionsCatSevenPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        
+    </mat-grid-list>          
+   
+</div>
+
+<div class="card" *ngIf="(!valida) && (tab===8)">
+    
+    <mat-grid-list cols="1" rowHeight="2:1">
+        
+        <mat-grid-tile class="tile">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets dos Ultimos 7 dias por Analista x Situação</mat-card-title>
+                    </mat-card-header>
+            <div class="graficobar">        
+            <p-chart type="bar" [data]="stackedDataAgenteSeven" [options]="stackedOptionsAgenteSeven"></p-chart>   
+            </div> 
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div class="card" *ngIf="(!valida) && (tab===9)">
+    
+    <mat-grid-list cols="1" rowHeight="2:1">
+        
+        <mat-grid-tile class="tile">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Total e Categoria dos Tickets dos Ultimos 7 dias</mat-card-title>
+                    </mat-card-header>
+            <div class="graficobar">        
+            <p-chart type="line" [data]="lineStylesSevenData" [options]="basicOptions"></p-chart> 
+            </div> 
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+
+<div class="card" *ngIf="(!valida) && (tab===10)">
+    <mat-grid-list cols="3" rowHeight="1:1">
+        <mat-grid-tile class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Situação dos Tickets</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Situação dos Tickets no dia Atual</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataSitDayPie" [options]="chartOptionsSitDayPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile  class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Urgencia</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Urgencia dos Tickets no dia Atual</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataUrgDayPie" [options]="chartOptionsUrgDayPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile  class="tile">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets por Categoria</mat-card-title>
+                    <mat-card-subtitle class="subtitulocard">Categoria dos Tickets no dia Atual</mat-card-subtitle>
+                </mat-card-header>
+                <p-chart type="pie" [data]="dataCatDayPie" [options]="chartOptionsCatDayPie" ></p-chart>
+            </mat-card>
+        </mat-grid-tile>
+        
+    </mat-grid-list>         
+   
+</div>
+
+<div class="card" *ngIf="(!valida) && (tab===11)">
+    
+    <mat-grid-list cols="1" rowHeight="2:1">
+        
+        <mat-grid-tile class="tile">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Tickets dos Ultimos 7 dias por Analista x Situação</mat-card-title>
+                    </mat-card-header>
+            <div class="graficobar">        
+                <p-chart type="bar" [data]="stackedDataAgenteDay" [options]="stackedOptionsAgenteDay"></p-chart>
+            </div> 
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div class="card" *ngIf="(!valida) && (tab===12)">
+    
+    <mat-grid-list cols="1" rowHeight="2:1">
+        
+        <mat-grid-tile class="tile">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="titulocard">Total e Categoria dos Tickets dos Ultimos 7 dias</mat-card-title>
+                    </mat-card-header>
+            <div class="graficobar">        
+                <p-chart type="line" [data]="lineStylesDayData" [options]="basicOptions"></p-chart>
+            </div> 
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+
