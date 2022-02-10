@@ -162,7 +162,7 @@ export class PesquisaComponent implements OnInit {
                 this.loading = false;
             }, 1000);
         } else {
-            this.pagina = (event.first! > 0) ? event.first! / 5 : 0;
+            this.pagina = (event.first! > 0) ? event.first! / 10 : 0;
             this.carregaPage(this.pagina).subscribe(registro => {
                 this.dataSource = registro;
                 this.loading = false;

@@ -1,0 +1,22 @@
+<p-progressSpinner class="progress" *ngIf="carregar"></p-progressSpinner>
+<div class="card" *ngIf="!carregar && !pesquisaCar">
+    <form [formGroup]="form" #fr="ngForm">
+        <app-crud [form]="fr" titulo="Categoria Agente" [api]="service">
+            <p-panel header="Identificação" styleClass="styleClass" [toggleable]="true">
+                <div fxLayout="column" fxLayoutGap="16px">
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <div class="p-field p-fluid">
+                            <span class="p-float-label">
+                                <input id="float-desCategoria" class="p-invalid" aria-describedby="desCategoria" type="text" pInputText
+                                    formControlName="desCategoria">
+                                <label for="float-desCategoria">Descrição</label>
+                                <small id="desCategoria" class="p-invalid">{{descategoria!.errors | erro}}</small>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </p-panel>
+        </app-crud>
+    </form>
+</div>
+

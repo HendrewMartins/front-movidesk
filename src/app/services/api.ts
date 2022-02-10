@@ -28,6 +28,7 @@ export class Api<T> {
     }
 
     public alterar(obj: T, id: number): Observable<T> {
+        console.log(obj);
         return this.http.put<T>(`${this.url}/edit/${id}`, obj).pipe(map((item: any) => {
             return item;
         }));

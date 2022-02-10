@@ -22,6 +22,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MenuModule } from 'primeng/menu';
 import { TabViewModule } from 'primeng/tabview';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { MultiSelectModule } from "primeng/multiselect";
+
 
 @NgModule({
     imports: [
@@ -46,7 +48,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
         AutoCompleteModule,
         MenuModule,
         TabViewModule,
-        ProgressBarModule
+        ProgressBarModule,
+        MultiSelectModule
     ],
     exports: [
         InputTextModule,
@@ -71,7 +74,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
         AutoCompleteModule,
         MenuModule,
         TabViewModule,
-        ProgressBarModule
+        ProgressBarModule,
+        MultiSelectModule
     ],
     declarations: [
   ]

@@ -1,10 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UIChart } from 'primeng/chart';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { CategoryOwner } from '../../cadastros/categoryowner/models/categoryowner';
 import { Category } from '../../graficos/models/category';
 import { ResolvedConfig } from '../../graficos/models/resolvedConfig';
 import { TicketsSituacao } from '../../graficos/models/ticketsSituacao';
 import { TicketsUrgency } from '../../graficos/models/ticketsUrgencia';
+
 
 @Component({
   selector: 'app-tickets-day',
@@ -13,35 +19,153 @@ import { TicketsUrgency } from '../../graficos/models/ticketsUrgencia';
 })
 export class TicketsDayComponent implements OnInit {
 
-    //tickets por situacao 7 dias
-    public dataSitDayPie: any;
-    public chartOptionsSitDayPie: any;
-  
-    //tickets por urgencia7 dias
-    public dataUrgDayPie: any;
-    public chartOptionsUrgDayPie: any;
-  
-    //tickets por Categoria 7 dias
-    public dataCatDayPie: any;
-    public chartOptionsCatDayPie: any;
-  
-    public ticketsDaySituacao!: TicketsSituacao;
-    public ticketsDayUrgecia!: TicketsUrgency;
-    public ticketsDayCategory!: Category;
+
+  @ViewChild('lineSitDay') chartSitDay!: UIChart;
+  @ViewChild('lineUrgDay') chartUrgDay!: UIChart;
+  @ViewChild('lineCatDay') chartCatDay!: UIChart;
+  public items!: any[];
+  public displayModal!: boolean;
+  public valor!: CategoryOwner[];
+  public categoryOwner!: CategoryOwner[];
+  public urlServico: string;
+  public urlTickets: string;
+
+  //tickets por situacao 7 dias
+  public dataSitDayPie: any;
+  public chartOptionsSitDayPie: any;
+
+  //tickets por urgencia7 dias
+  public dataUrgDayPie: any;
+  public chartOptionsUrgDayPie: any;
+
+  //tickets por Categoria 7 dias
+  public dataCatDayPie: any;
+  public chartOptionsCatDayPie: any;
+
+  public ticketsDaySituacao!: TicketsSituacao;
+  public ticketsDayUrgecia!: TicketsUrgency;
+  public ticketsDayCategory!: Category;
+
+
+
 
   constructor(public route: ActivatedRoute,
     public http: HttpClient,
-    public router: Router,) 
-    {
+    public router: Router,) {
     const config: ResolvedConfig = this.route.snapshot.data as any;
     this.ticketsDaySituacao = config.daysituacao!;
     this.ticketsDayUrgecia = config.dayurgency!;
     this.ticketsDayCategory = config.daycategory!;
+    this.urlServico = environment.api + '/api/controllercategory';
+    this.urlTickets = environment.api + '/api/tickets/';
   }
 
-   
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.buscarCategory();
+    this.items = [
+      {
+        label: 'Opções',
+        items: [{
+          label: 'Filtros',
+          icon: 'pi pi-external-link',
+          command: () => {
+            this.showModalDialog();
+          }
+        }
+        ]
+      }
+    ];
+
+    this.geraGraficoSit();
+    this.geraGraficoUrg();
+    this.geraGraficoCat();
+  }
+
+  public showModalDialog() {
+    this.displayModal = true;
+  }
+
+  private buscarCategory() {
+    // tslint:disable-next-line: deprecation
+    this.buscarTodasCategorias().subscribe((registro: CategoryOwner[]) => {
+      this.categoryOwner = registro;
+      this.valor = this.categoryOwner;
+      console.log(registro);
+    }, (error: any) => {
+      console.error(error);
+      alert('Deu Erro na hora de Carregar Totos os itens');
+    });
+  }
+
+  public buscarTodasCategorias(): Observable<CategoryOwner[]> {
+    return this.http.get<CategoryOwner[]>(this.urlServico).pipe(map((item: CategoryOwner[]) => {
+      return item;
+    }));
+
+  }
+
+  public carregarGraficos() {
+    console.log(this.valor);
+    this.buscarDados(this.valor);
+
+  }
+
+  private buscarDados(value: any) {
+    // tslint:disable-next-line: deprecation
+    this.buscarStatusSitAPI(value).subscribe((registro: TicketsSituacao) => {
+      this.ticketsDaySituacao = registro;
+      this.geraGraficoSit();
+      this.chartSitDay.reinit();
+      console.log(registro);
+    }, (error: any) => {
+      console.error(error);
+      alert('Deu Erro na hora de Carregar Totos os itens');
+    });
+
+    this.buscarStatusCatAPI(value).subscribe((registro: Category) => {
+      this.ticketsDayCategory = registro;
+      this.geraGraficoCat();
+      this.chartCatDay.reinit();
+      console.log(registro);
+    }, (error: any) => {
+      console.error(error);
+      alert('Deu Erro na hora de Carregar Totos os itens');
+    });
+
+    this.buscarStatusUrgAPI(value).subscribe((registro: TicketsUrgency) => {
+      this.ticketsDayUrgecia = registro;
+      this.geraGraficoUrg();
+      this.chartSitDay.reinit();
+      console.log(registro);
+    }, (error: any) => {
+      console.error(error);
+      alert('Deu Erro na hora de Carregar Totos os itens');
+    });
+  }
+
+  public buscarStatusSitAPI(value: any): Observable<TicketsSituacao> {
+    return this.http.post<TicketsSituacao>(this.urlTickets + "filterstatusdaysum", value).pipe(map((item: TicketsSituacao) => {
+      return item;
+    }));
+
+  }
+
+  public buscarStatusUrgAPI(value: any): Observable<TicketsUrgency> {
+    return this.http.post<TicketsUrgency>(this.urlTickets + "filterurgencydaysum", value).pipe(map((item: TicketsUrgency) => {
+      return item;
+    }));
+
+  }
+
+  public buscarStatusCatAPI(value: any): Observable<Category> {
+    return this.http.post<Category>(this.urlTickets + "filterdaycategory", value).pipe(map((item: Category) => {
+      return item;
+    }));
+
+  }
+
+  public geraGraficoSit() {
     this.dataSitDayPie = {
       labels: ['Novo-' + this.ticketsDaySituacao.newReg,
       'Em Atend.-' + this.ticketsDaySituacao.inAttendance,
@@ -74,7 +198,9 @@ export class TicketsDayComponent implements OnInit {
         }
       ]
     };
+  }
 
+  public geraGraficoUrg() {
     this.dataUrgDayPie = {
       labels: ['Sem Urgencia-' + this.ticketsDayUrgecia.nulo,
       'Baixa-' + this.ticketsDayUrgecia.baixa,
@@ -102,7 +228,9 @@ export class TicketsDayComponent implements OnInit {
         }
       ]
     };
+  }
 
+  public geraGraficoCat() {
     this.dataCatDayPie = {
       labels: ['Customização-' + this.ticketsDayCategory.customizacao,
       'Dúvida-' + this.ticketsDayCategory.duvida,
@@ -155,7 +283,6 @@ export class TicketsDayComponent implements OnInit {
       ]
     };
   }
-
 }
 
 

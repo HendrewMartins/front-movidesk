@@ -1,4 +1,10 @@
 <div class="card" *ngIf="true">
+    <p-panel header="Resumo do Dia Atual" styleClass="styleClass" [toggleable]="false">
+        <ng-template pTemplate="icons">
+            <button pButton class="p-panel-header-icon p-link" icon="pi pi-cog" (click)="menu.toggle($event)">
+            </button>
+            <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+        </ng-template>
     <mat-grid-list cols="3" rowHeight="1:1">
         <mat-grid-tile class="tile">
             <mat-card class="example-card">
@@ -6,7 +12,7 @@
                     <mat-card-title class="titulocard">Situação dos Tickets</mat-card-title>
                     <mat-card-subtitle class="subtitulocard">Situação dos Tickets no dia Atual</mat-card-subtitle>
                 </mat-card-header>
-                <p-chart type="pie" [data]="dataSitDayPie" [options]="chartOptionsSitDayPie" ></p-chart>
+                <p-chart #lineSitDay type="pie" [data]="dataSitDayPie" [options]="chartOptionsSitDayPie" ></p-chart>
             </mat-card>
         </mat-grid-tile>
         <mat-grid-tile  class="tile">
@@ -15,7 +21,7 @@
                     <mat-card-title class="titulocard">Tickets por Urgencia</mat-card-title>
                     <mat-card-subtitle class="subtitulocard">Urgencia dos Tickets no dia Atual</mat-card-subtitle>
                 </mat-card-header>
-                <p-chart type="pie" [data]="dataUrgDayPie" [options]="chartOptionsUrgDayPie" ></p-chart>
+                <p-chart type="pie" #lineUrgDay [data]="dataUrgDayPie" [options]="chartOptionsUrgDayPie" ></p-chart>
             </mat-card>
         </mat-grid-tile>
         <mat-grid-tile  class="tile">
@@ -24,10 +30,39 @@
                     <mat-card-title class="titulocard">Tickets por Categoria</mat-card-title>
                     <mat-card-subtitle class="subtitulocard">Categoria dos Tickets no dia Atual</mat-card-subtitle>
                 </mat-card-header>
-                <p-chart type="pie" [data]="dataCatDayPie" [options]="chartOptionsCatDayPie" ></p-chart>
+                <p-chart type="pie" #lineCatDay [data]="dataCatDayPie" [options]="chartOptionsCatDayPie" ></p-chart>
             </mat-card>
         </mat-grid-tile>
         
     </mat-grid-list>          
-   
+    </p-panel>
 </div>
+
+<p-dialog header="Categoria de Agentes" [(visible)]="displayModal" [modal]="true"
+[style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+<p-card styleClass="p-card-shadow">
+    <ng-template pTemplate="content">
+        
+                <div fxLayout="column" fxLayoutGap="16px">
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <div class="tipoDrop">
+                            <div class="field col-12 md:col-4">
+                                <span class="p-float-label">
+                                    <p-multiSelect inputId="multiselect" [options]="categoryOwner" [(ngModel)]="valor" optionLabel="desCategoria" [filter]="false"></p-multiSelect>
+                                    <label for="multiselect">Categorias</label>
+                                </span>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+    
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple type="button" label="Voltar"
+            (click)="displayModal=false"
+            class="p-button-outlined p-button-secondary"></button>
+        <p-button icon="pi pi-check" type="submit" (click)="carregarGraficos()"
+            label="Ok" class="p-button-text"></p-button>
+    </ng-template>
+</p-card>
+</p-dialog>

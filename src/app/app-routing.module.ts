@@ -24,6 +24,9 @@ const routes: Routes = [
           { path: 'resumoday', loadChildren: () => import('./modules/templates/tickets-day/tickets-day.module').then(m => m.TicketsDayModule)},
           { path: 'agenteday', loadChildren: () => import('./modules/newtemplates/tickets-day-status/tickets-day-status.module').then(m => m.TicketsDayStatusModule)},
           { path: 'categoryday', loadChildren: () => import('./modules/templates/tickets-day-category/tickets-day-category.module').then(m => m.TicketsDayCategoryModule)},
+          { path: 'controllercategory', loadChildren: () => import('./modules/cadastros/categoryowner/categoryowner.module').then(m => m.CategoryownerModule)},
+          { path: 'agentes', loadChildren: () => import('./modules/cadastros/owner/owner.module').then(m => m.OwnerModule)},
+
         ]
   }
 ];

@@ -102,6 +102,24 @@ export class MenuDataService {
                 ], IsChildVisible: false
 
             },
+            {
+                Label: 'Configurações', Icon: 'pi pi-chevron-down', RouterLink: null, Childs: [
+
+                    {
+                        Label: 'Categorias dos Agentes', Icon: 'pi pi-globe', RouterLink: 'controllercategory', Childs: [], IsChildVisible: false
+
+                    },
+
+                    {
+                        Label: 'Agentes', Icon: 'pi pi-shield', RouterLink: 'agentes', Childs: [], IsChildVisible: false
+
+                    },
+            
+                ], IsChildVisible: false
+
+            },
+
+            
 
         ];
     }

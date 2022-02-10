@@ -1649,7 +1649,8 @@ this.lineStylesDayData = {
   public timeAtualizaPage() {
     setTimeout(() => {
       this.router.navigate(['loading'], { relativeTo: this.route.parent });
+      console.log("recarregou!!!")
       this.timeAtualizaPage;
-    }, 900000);
+    },900000);
   }
 }

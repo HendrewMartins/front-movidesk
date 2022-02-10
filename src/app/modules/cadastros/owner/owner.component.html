@@ -1,0 +1,75 @@
+<p-progressSpinner class="progress" *ngIf="carregar"></p-progressSpinner>
+<div class="card" *ngIf="!carregar && !pesquisaCar">
+    <form [formGroup]="form" #fr="ngForm">
+        <app-crud [form]="fr" titulo="Categoria Agente" [api]="service">
+            <p-panel header="Identificação" styleClass="styleClass" [toggleable]="true">
+                <div fxLayout="column" fxLayoutGap="16px">
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <div class="p-field p-fluid">
+                            <span class="p-float-label">
+                                <input id="float-businessName" class="p-invalid" aria-describedby="businessName" type="text" pInputText
+                                    formControlName="businessName">
+                                <label for="float-businessName">Descrição</label>
+                                <small id="businessName" class="p-invalid">{{businessName!.errors | erro}}</small>
+                            </span>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <div class="p-field p-fluid">
+                            <span class="p-float-label">
+                                <input id="float-personType" class="p-invalid" aria-describedby="personType" type="number"
+                                 pInputText formControlName="personType">
+                                <label for="float-personType">Type</label>
+                                <small id="personType" class="p-invalid">{{personType!.errors | erro}}</small>
+                            </span>
+                        </div>
+                        <div class="p-field p-fluid">
+                            <span class="p-float-label">
+                                <input id="float-profileType"  type="number" class="p-invalid" aria-describedby="profileType"
+                                    pInputText formControlName="profileType">
+                                <label for="float-profileType">ProfileType</label>
+                                <small id="profileType" class="p-invalid">{{profileType!.errors | erro}}</small>
+                            </span>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <div class="p-field p-fluid">
+                            <span class="p-float-label">
+                                <input id="float-email" class="p-invalid" aria-describedby="email" type="text" pInputText
+                                    formControlName="email">
+                                <label for="float-email">Email</label>
+                                <small id="email" class="p-invalid">{{email!.errors | erro}}</small>
+                            </span>
+                        </div>
+                        <div class="p-field p-fluid">
+                            <span class="p-float-label">
+                                <input id="float-phone" class="p-invalid" aria-describedby="phone" type="text" pInputText
+                                    formControlName="phone">
+                                <label for="float-phone">Phone</label>
+                                <small id="phone" class="p-invalid">{{phone!.errors | erro}}</small>
+                            </span>
+                        </div>
+                        <div class="p-field p-fluid">
+                            <span class="p-float-label">
+                                <input id="float-pathPicture" class="p-invalid" aria-describedby="pathPicture" type="text" pInputText
+                                    formControlName="pathPicture">
+                                <label for="float-pathPicture">pathPicture</label>
+                                <small id="pathPicture" class="p-invalid">{{pathPicture!.errors | erro}}</small>
+                            </span>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="22px">
+                        <div class="alunoautocomplete">
+                        <p-autoComplete class="alunoautocomplete" [showEmptyMessage]="true" formControlName="categoryOwner" [suggestions]="listaCategoria"
+                        placeholder="Digite a Categoria" (completeMethod)="filtroCategory($event)" field="desCategoria" dataKey="id" minLength="2"></p-autoComplete>
+                        <small id="categoryOwner" class="p-invalid">{{categoryOwner!.errors | erro}}</small>
+                       </div>
+                    </div>
+                    
+                </div>
+                
+            </p-panel>
+        </app-crud>
+    </form>
+</div>
+

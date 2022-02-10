@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UIChart } from 'primeng/chart';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { CategoryOwner } from '../../cadastros/categoryowner/models/categoryowner';
 import { Category } from '../../graficos/models/category';
 import { ResolvedConfig } from '../../graficos/models/resolvedConfig';
 import { TicketsSituacao } from '../../graficos/models/ticketsSituacao';
@@ -12,6 +17,16 @@ import { TicketsUrgency } from '../../graficos/models/ticketsUrgencia';
   styleUrls: ['./tickets-seven.component.css']
 })
 export class TicketsSevenComponent implements OnInit {
+
+  @ViewChild('lineSitDay') chartSitDay!: UIChart;
+  @ViewChild('lineUrgDay') chartUrgDay!: UIChart;
+  @ViewChild('lineCatDay') chartCatDay!: UIChart;
+  public items!: any[];
+  public displayModal!: boolean;
+  public valor!: CategoryOwner[];
+  public categoryOwner!: CategoryOwner[];
+  public urlServico: string;
+  public urlTickets: string;
 
   //tickets por situacao 7 dias
   public dataSitSevenPie: any;
@@ -35,10 +50,116 @@ export class TicketsSevenComponent implements OnInit {
     this.ticketsSevenSituacao = config.sevensituacao!;
     this.ticketsSevenUrgecia = config.sevenurgency!;
     this.ticketsSevenCategory = config.sevencategory!;
+    this.urlServico = environment.api + '/api/controllercategory';
+    this.urlTickets = environment.api + '/api/tickets/';
   }
 
   ngOnInit(): void {
 
+    this.buscarCategory();
+    this.items = [
+      {
+        label: 'Opções',
+        items: [{
+          label: 'Filtros',
+          icon: 'pi pi-external-link',
+          command: () => {
+            this.showModalDialog();
+          }
+        }
+        ]
+      }
+    ];
+
+    this.geraGraficoSit();
+    this.geraGraficoUrg();
+    this.geraGraficoCat();
+  }
+
+  public showModalDialog() {
+    this.displayModal = true;
+  }
+
+  private buscarCategory() {
+    // tslint:disable-next-line: deprecation
+    this.buscarTodasCategorias().subscribe((registro: CategoryOwner[]) => {
+      this.categoryOwner = registro;
+      this.valor = this.categoryOwner;
+      console.log(registro);
+    }, (error: any) => {
+      console.error(error);
+      alert('Deu Erro na hora de Carregar Totos os itens');
+    });
+  }
+
+  public buscarTodasCategorias(): Observable<CategoryOwner[]> {
+    return this.http.get<CategoryOwner[]>(this.urlServico).pipe(map((item: CategoryOwner[]) => {
+      return item;
+    }));
+
+  }
+
+  public carregarGraficos() {
+    console.log(this.valor);
+    this.buscarDados(this.valor);
+
+  }
+
+  private buscarDados(value: any) {
+    // tslint:disable-next-line: deprecation
+    this.buscarStatusSitAPI(value).subscribe((registro: TicketsSituacao) => {
+      this.ticketsSevenSituacao = registro;
+      this.geraGraficoSit();
+      this.chartSitDay.reinit();
+      console.log(registro);
+    }, (error: any) => {
+      console.error(error);
+      alert('Deu Erro na hora de Carregar Totos os itens');
+    });
+
+    this.buscarStatusCatAPI(value).subscribe((registro: Category) => {
+      this.ticketsSevenCategory = registro;
+      this.geraGraficoCat();
+      this.chartCatDay.reinit();
+      console.log(registro);
+    }, (error: any) => {
+      console.error(error);
+      alert('Deu Erro na hora de Carregar Totos os itens');
+    });
+
+    this.buscarStatusUrgAPI(value).subscribe((registro: TicketsUrgency) => {
+      this.ticketsSevenUrgecia = registro;
+      this.geraGraficoUrg();
+      this.chartSitDay.reinit();
+      console.log(registro);
+    }, (error: any) => {
+      console.error(error);
+      alert('Deu Erro na hora de Carregar Totos os itens');
+    });
+  }
+
+  public buscarStatusSitAPI(value: any): Observable<TicketsSituacao> {
+    return this.http.post<TicketsSituacao>(this.urlTickets + "filterstatussevensum", value).pipe(map((item: TicketsSituacao) => {
+      return item;
+    }));
+
+  }
+
+  public buscarStatusUrgAPI(value: any): Observable<TicketsUrgency> {
+    return this.http.post<TicketsUrgency>(this.urlTickets + "filterurgencysevensum", value).pipe(map((item: TicketsUrgency) => {
+      return item;
+    }));
+
+  }
+
+  public buscarStatusCatAPI(value: any): Observable<Category> {
+    return this.http.post<Category>(this.urlTickets + "filtersevencategory", value).pipe(map((item: Category) => {
+      return item;
+    }));
+
+  }
+
+  public geraGraficoSit() {
     this.dataSitSevenPie = {
       labels: ['Novo-' + this.ticketsSevenSituacao.newReg,
       'Em Atend.-' + this.ticketsSevenSituacao.inAttendance,
@@ -71,7 +192,9 @@ export class TicketsSevenComponent implements OnInit {
         }
       ]
     };
+  }
 
+  public geraGraficoUrg() {
     this.dataUrgSevenPie = {
       labels: ['Sem Urgencia-' + this.ticketsSevenUrgecia.nulo,
       'Baixa-' + this.ticketsSevenUrgecia.baixa,
@@ -99,7 +222,9 @@ export class TicketsSevenComponent implements OnInit {
         }
       ]
     };
+  }
 
+  public geraGraficoCat() {
     this.dataCatSevenPie = {
       labels: ['Customização-' + this.ticketsSevenCategory.customizacao,
       'Dúvida-' + this.ticketsSevenCategory.duvida,
@@ -152,5 +277,4 @@ export class TicketsSevenComponent implements OnInit {
       ]
     };
   }
-
 }

@@ -29,6 +29,8 @@ import { TicketsSevenCategoryModule } from './modules/templates/tickets-seven-ca
 import { TicketsDayModule } from './modules/templates/tickets-day/tickets-day.module';
 import { TicketsDayCategoryModule } from './modules/templates/tickets-day-category/tickets-day-category.module';
 import { TicketsDayStatusModule } from './modules/newtemplates/tickets-day-status/tickets-day-status.module';
+import { CategoryownerModule } from './modules/cadastros/categoryowner/categoryowner.module';
+import { OwnerModule } from './modules/cadastros/owner/owner.module';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { TicketsDayStatusModule } from './modules/newtemplates/tickets-day-statu
     TicketsSevenCategoryModule,
     TicketsDayModule,
     TicketsDayCategoryModule,
-    TicketsDayStatusModule
+    TicketsDayStatusModule,
+    CategoryownerModule,
+    OwnerModule
   ],
  
 

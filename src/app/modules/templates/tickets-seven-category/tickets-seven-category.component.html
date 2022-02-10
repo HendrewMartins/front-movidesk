@@ -1,10 +1,46 @@
 <div class="card" *ngIf="true">
+    <p-panel header="Total e Categoria" styleClass="styleClass" [toggleable]="false">
+        <ng-template pTemplate="icons">
+            <button pButton class="p-panel-header-icon p-link" icon="pi pi-cog" (click)="menu.toggle($event)">
+            </button>
+            <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+        </ng-template>
     <mat-card class="example-card">
         <mat-card-header>
             <mat-card-title class="titulocard">Total e Categoria dos Tickets dos Ultimos 7 dias</mat-card-title>
         </mat-card-header>
         <div class="graficobar">
-            <p-chart type="line" [data]="lineStylesSevenData" [options]="basicOptions"></p-chart>
+            <p-chart type="line" #lineStaDay [data]="lineStylesSevenData" [options]="basicOptions"></p-chart>
         </div>
     </mat-card>
+    </p-panel>
 </div>
+
+<p-dialog header="Categoria de Agentes" [(visible)]="displayModal" [modal]="true"
+[style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+<p-card styleClass="p-card-shadow">
+    <ng-template pTemplate="content">
+        
+                <div fxLayout="column" fxLayoutGap="16px">
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <div class="tipoDrop">
+                            <div class="field col-12 md:col-4">
+                                <span class="p-float-label">
+                                    <p-multiSelect inputId="multiselect" [options]="categoryOwner" [(ngModel)]="valor" optionLabel="desCategoria" [filter]="false"></p-multiSelect>
+                                    <label for="multiselect">Categorias</label>
+                                </span>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+    
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple type="button" label="Voltar"
+            (click)="displayModal=false"
+            class="p-button-outlined p-button-secondary"></button>
+        <p-button icon="pi pi-check" type="submit" (click)="carregarGraficos()"
+            label="Ok" class="p-button-text"></p-button>
+    </ng-template>
+</p-card>
+</p-dialog>

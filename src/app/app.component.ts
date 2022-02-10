@@ -52,8 +52,8 @@ export class AppComponent {
           this.atualizaTickets();
         });
         this.timeCarregarTickets();
-        console.log('30 minutos');
-      }, 1800000);
+        console.log('10 minutos');
+      }, 600000);
     }
 
     public timeCarregarStatusTickets() {
@@ -62,8 +62,8 @@ export class AppComponent {
           this.atualizaStatusTickets();
         });
         this.timeCarregarStatusTickets();
-        console.log('10 minutos');
-      }, 1800000);
+        console.log('22 minutos');
+      }, 1320000);
     }
 
     public atualizaTickets() {
